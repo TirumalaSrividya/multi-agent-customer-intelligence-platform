@@ -4,6 +4,7 @@
 
 This project implements a Multi-Agent Customer Intelligence Platform that processes customer queries using four specialized AI agents sharing a single LLM backend.
 
+The platform is designed to support 100+ concurrent customer sessions while operating within an 8 GB GPU KV Cache budget by leveraging LMCache Prefix Caching and KV Cache Offloading.
 
 ## Agent Pipeline 
 ```
