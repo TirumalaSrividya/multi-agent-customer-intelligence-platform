@@ -1,0 +1,51 @@
+# Full production topology. `api` is this repo's FastAPI service; `llm`
+# is a real vLLM server with the LMCache connector enabled, running on
+# the GPU host. Run `docker compose --profile prod up` once you have a
+# GPU host and a real model available; `docker compose up api` alone
+# runs the platform in mock mode with no GPU required.
+version: "3.9"
+
+services:
+  api:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - LLM_BACKEND_MODE=${LLM_BACKEND_MODE:-mock}
+      - VLLM_BASE_URL=http://llm:8000/v1
+      - VLLM_MODEL_NAME=${VLLM_MODEL_NAME:-meta-llama/Meta-Llama-3-8B-Instruct}
+      - KV_CACHE_BUDGET_GB=8
+      - MAX_CONCURRENT_SESSIONS=100
+    depends_on:
+      llm:
+        condition: service_started
+        required: false
+
+  llm:
+    profiles: ["prod"]
+    image: vllm/vllm-openai:latest
+    command: >
+      --model ${VLLM_MODEL_NAME:-meta-llama/Meta-Llama-3-8B-Instruct}
+      --gpu-memory-utilization 0.85
+      --kv-cache-dtype fp8
+      --enable-prefix-caching
+      --kv-transfer-config '{"kv_connector":"LMCacheConnector"}'
+    environment:
+      - LMCACHE_CONFIG_FILE=/config/lmcache_config.yaml
+    volumes:
+      - ./lmcache_config.yaml:/config/lmcache_config.yaml:ro
+      - lmcache-disk:/mnt/lmcache/store
+    ports:
+      - "8000:8000"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+volumes:
+  lmcache-disk:

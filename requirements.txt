@@ -1,0 +1,22 @@
+# --- Core ---
+pydantic>=2.6
+pydantic-settings>=2.2
+fastapi>=0.110
+uvicorn[standard]>=0.29
+httpx>=0.27
+tenacity>=8.2
+python-dotenv>=1.0
+structlog>=24.1
+
+# --- Vector store / retrieval ---
+chromadb>=0.5
+sentence-transformers>=2.6   # optional, mock embedder used by default (no GPU needed)
+
+# --- LLM backend (production mode) ---
+openai>=1.30                 # vLLM exposes an OpenAI-compatible API
+# vllm>=0.5                  # install on the GPU host only, see README
+# lmcache>=0.1                # install on the GPU host only, see README
+
+# --- Testing ---
+pytest>=8.0
+pytest-asyncio>=0.23

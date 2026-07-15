@@ -1,0 +1,42 @@
+[
+  {
+    "article_id": "kb_001",
+    "title": "Refund Policy",
+    "text": "Refunds are issued within 5-7 business days to the original payment method for any cancellation requested within 30 days of purchase. After 30 days, refunds are only available on a pro-rated basis for annual plans. {{internal note: finance team must approve refunds over $500}}"
+  },
+  {
+    "article_id": "kb_002",
+    "title": "Password Reset Steps",
+    "text": "To reset your password, go to Settings > Security > Reset Password, enter your registered email, and follow the link sent to your inbox. The reset link expires after 60 minutes. If you do not receive the email within 10 minutes, check your spam folder before contacting support."
+  },
+  {
+    "article_id": "kb_003",
+    "title": "Order Tracking",
+    "text": "Once an order ships, a tracking link is emailed automatically and also available under Orders > Order History. Standard shipping typically takes 3-5 business days domestically and 7-14 business days internationally."
+  },
+  {
+    "article_id": "kb_004",
+    "title": "Subscription Tiers",
+    "text": "The platform offers three tiers: Starter ($19/mo, 1 seat), Team ($49/mo, up to 10 seats), and Enterprise (custom pricing, unlimited seats, SSO, and dedicated support). Upgrading takes effect immediately with a prorated charge; downgrading takes effect at the next billing cycle."
+  },
+  {
+    "article_id": "kb_005",
+    "title": "API Rate Limits",
+    "text": "The public API allows 100 requests per minute per API key on the Starter tier, 500 on Team, and custom limits on Enterprise. Exceeding the limit returns HTTP 429 with a Retry-After header indicating the number of seconds to wait."
+  },
+  {
+    "article_id": "kb_006",
+    "title": "Account Closure",
+    "text": "Closing your account permanently deletes all associated data after a 14-day grace period, during which reactivation is possible by logging back in. Data cannot be recovered after the grace period ends."
+  },
+  {
+    "article_id": "kb_007",
+    "title": "Troubleshooting Sync Errors",
+    "text": "If you see a 'Sync failed' error, first check your internet connection, then verify the integration credentials under Settings > Integrations have not expired. Most sync errors resolve after disconnecting and reconnecting the integration."
+  },
+  {
+    "article_id": "kb_008",
+    "title": "Enterprise SSO Setup",
+    "text": "Enterprise customers can configure SAML-based SSO under Settings > Security > SSO. You will need your identity provider's metadata URL and a designated admin email. SSO setup typically takes under 15 minutes."
+  }
+]

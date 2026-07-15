@@ -1,0 +1,48 @@
+# LMCache configuration for the vLLM server process.
+# Consumed by vLLM at startup via: --kv-transfer-config or
+# LMCACHE_CONFIG_FILE=deploy/lmcache_config.yaml, depending on LMCache
+# version -- see https://github.com/LMCache/LMCache for the exact flag
+# your installed version expects.
+#
+# Rationale for each setting is inline; the numbers here are what make
+# the "4 agents x 100 sessions" workload fit inside an 8GB GPU KV-cache
+# budget (see scripts/benchmark_cache.py for the arithmetic).
+
+chunk_size: 256          # tokens per cacheable KV chunk. Our shortest
+                          # fixed system prompt (~330 tokens) still spans
+                          # 1-2 chunks, so the *entire* fixed prompt is
+                          # chunk-aligned and matchable as a unit.
+
+local_cpu: true           # enable CPU RAM as the first offload tier.
+                          # Session history that isn't the active turn
+                          # is evicted from GPU HBM to here instead of
+                          # being discarded, so returning users on their
+                          # 2nd/3rd/... turn still get history KV reuse.
+max_local_cpu_size: 40    # GB of CPU RAM reserved for offloaded KV
+                          # (matches LMCACHE_CPU_OFFLOAD_GB in .env).
+
+local_disk: true          # second offload tier for cold sessions (idle
+                          # >few minutes) so CPU RAM isn't exhausted
+                          # under sustained 100+ concurrent sessions.
+max_local_disk_size: 200  # GB
+local_disk_path: /mnt/lmcache/store
+
+# GPU-resident budget: this is enforced on the vLLM side via
+# --gpu-memory-utilization / --kv-cache-dtype, not here directly, but
+# LMCache's chunk eviction policy below determines *what* stays
+# GPU-resident once that budget is hit.
+eviction_policy: LRU       # least-recently-used chunk eviction once the
+                          # GPU KV budget is full: the 4 shared system
+                          # prompt chunks are touched on every single
+                          # request (all 100 sessions, every turn) so
+                          # they are, by construction, never the LRU
+                          # chunk and effectively stay pinned in GPU HBM
+                          # for free -- exactly the property we want.
+
+enable_blending: false    # (advanced) chunk-level cache blending for
+                          # non-prefix-aligned reuse; left off for this
+                          # workload since our prompt ordering already
+                          # guarantees clean prefix alignment (see
+                          # core/cache_manager.py docstring).
+
+log_level: INFO
