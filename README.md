@@ -88,12 +88,12 @@ customer-intel-platform
 
 ## High Level Architecture
 
-<img width="400" height="600" alt="image" src="https://github.com/user-attachments/assets/e19f9415-10f6-4724-a6c8-739e7513a9ee" />
+<img width="600" height="700" alt="image" src="https://github.com/user-attachments/assets/e19f9415-10f6-4724-a6c8-739e7513a9ee" />
 
 
 LMCache Architecture
 
-<img width="400" height="600" alt="image" src="https://github.com/user-attachments/assets/e7aa3e92-81ad-436d-9ba5-20a47529de38" />
+<img width="600" height="700" alt="image" src="https://github.com/user-attachments/assets/e7aa3e92-81ad-436d-9ba5-20a47529de38" />
 
 
 ## Installations
