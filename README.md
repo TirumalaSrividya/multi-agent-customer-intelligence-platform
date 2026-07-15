@@ -88,7 +88,8 @@ customer-intel-platform
 
 ## High Level Architecture
 ```
-!(https://github.com/user-attachments/assets/d0abdf69-d7ee-4cd5-9e72-1cb2e8c57977)
+<img width="1094" height="998" alt="image" src="https://github.com/user-attachments/assets/e19f9415-10f6-4724-a6c8-739e7513a9ee" />
+
 
                     
 ```
@@ -99,7 +100,7 @@ LMCache Architecture
 ```
 
 
-![Architecture Diagram](https://github.com/user-attachments/assets/1f4619c1-6a7f-4f1c-9065-c8de09ef380c)
+<img width="1094" height="902" alt="image" src="https://github.com/user-attachments/assets/e7aa3e92-81ad-436d-9ba5-20a47529de38" />
 
 ```
 
