@@ -171,13 +171,6 @@ Swagger UI Available at
 http://localhost:8080/docs
 ```
 
-Example Request
-```
-{
-  "session_id": "user1",
-  "message": "How do I reset my password?"
-}
-```
 
 ## Knowledge Base Ingestion
 
