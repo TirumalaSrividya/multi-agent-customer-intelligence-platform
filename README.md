@@ -102,7 +102,7 @@ LMCache Architecture
    
 ```bash
 git clone https://github.com/TirumalaSrividya/multi-agent-customer-intelligence.git
-cd multi-agent-customer-intelligence
+cd customer-intel-platform
 ```
 
 2. Install Dependencies
