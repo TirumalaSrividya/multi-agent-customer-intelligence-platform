@@ -27,7 +27,7 @@ Final Response
 ```
 
 ## Features
-
+```
 Multi-Agent Architecture
 Shared LLM Backend
 LMCache Prefix Caching
@@ -38,7 +38,7 @@ FastAPI REST API
 Logging & Error Handling
 Unit & Integration Testing
 Load Testing for 100+ Sessions
-
+```
 
 ## Project Structure
 ```
