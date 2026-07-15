@@ -142,8 +142,8 @@ LMCache Architecture
 
 1. Clone Repository
 
-git clone https://github.com/TirumalaSrividya/multi-agent-customer-intelligence
-cd customer-intel-platform
+git clone ``` https://github.com/TirumalaSrividya/multi-agent-customer-intelligence ```
+``` cd customer-intel-platform ``` 
 
 2. Install Dependencies
 
