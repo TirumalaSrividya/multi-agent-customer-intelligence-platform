@@ -7,7 +7,7 @@ This project implements a Multi-Agent Customer Intelligence Platform that proces
 The platform is designed to support 100+ concurrent customer sessions while operating within an 8 GB GPU KV Cache budget by leveraging LMCache Prefix Caching and KV Cache Offloading.
 
 ## Agent Pipeline 
-
+```
 User Request
       │
       ▼
@@ -24,7 +24,7 @@ Quality Checker
       │
       ▼
 Final Response 
-
+```
 
 ## Features
 
@@ -41,7 +41,7 @@ Load Testing for 100+ Sessions
 
 
 ## Project Structure
-
+```
 customer-intel-platform
 │
 ├── agents/                  # AI Agents
@@ -84,9 +84,10 @@ customer-intel-platform
 ├── requirements.txt
 │
 └── README.md
-
+```
 
 ## High Level Architecture
+```
 
                     +----------------------+
                     |     User Request     |
@@ -118,8 +119,10 @@ customer-intel-platform
                    |                     |
                    ▼                     ▼
           Return Response              Retry
+```
+          
 
-
+```
 LMCache Architecture
 
              Shared LLM Backend
@@ -136,7 +139,7 @@ LMCache Architecture
              CPU / Disk Offload
                      │
                100+ Sessions
-
+```
 
 ## Installations
 
