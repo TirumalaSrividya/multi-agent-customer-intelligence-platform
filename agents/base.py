@@ -1,6 +1,4 @@
 """
-Base implementation shared by all agents.
-
 Provides LLM communication, retry handling, response parsing,
 caching, and telemetry collection.
 """
