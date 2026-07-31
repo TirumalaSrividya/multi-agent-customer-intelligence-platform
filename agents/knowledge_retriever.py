@@ -28,9 +28,7 @@ class KnowledgeRetrieverAgent(BaseAgent):
 
         candidates = self.knowledge_base.search(state.user_message, top_k=self.top_k)
 
-        # Dynamic context: user request + intent + candidate articles from
-        # the vector DB, appended after the fixed instruction block so that
-        # block stays a clean cacheable prefix.
+        # Append dynamic content separately to preserve prompt caching.
         dynamic_context = (
             f"CUSTOMER_REQUEST:\n{state.user_message}\n\n"
             f"CLASSIFIED_INTENT: {state.intent.intent}\n\n"
