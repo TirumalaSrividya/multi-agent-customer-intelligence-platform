@@ -1,9 +1,3 @@
-"""Simulate 100+ concurrent multi-turn sessions against the in-process
-pipeline (mock backend by default) and report latency + cache-hit stats.
-
-Usage:
-    python scripts/load_test.py --sessions 120 --turns 3
-"""
 from __future__ import annotations
 
 import argparse
