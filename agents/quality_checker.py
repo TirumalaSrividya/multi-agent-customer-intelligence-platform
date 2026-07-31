@@ -43,10 +43,7 @@ class QualityCheckerAgent(BaseAgent):
         try:
             return self._parse_json(raw)
         except Exception:
-            # Quality checker output failing to parse must never crash the
-            # pipeline (this is the *last* gate) -- fail safe by treating
-            # it as a failed quality check so the pipeline escalates
-            # instead of silently shipping an unverified response.
+            # Fail safely if the final quality check cannot be parsed.
             state.errors.append("quality_checker: malformed output, failing safe (treated as fail)")
             return {
                 "grounding": 0.0,
