@@ -1,12 +1,5 @@
-"""Standalone knowledge-base ingestion script.
+# Knowledge base ingestion utility.
 
-Runs the full ingest -> summarize -> index pipeline using the shared LLM
-backend (mock by default, real vLLM/LMCache in production -- same
-LLM_BACKEND_MODE env var as everything else).
-
-Usage:
-    python scripts/ingest_kb.py [path/to/articles.json]
-"""
 from __future__ import annotations
 
 import asyncio
