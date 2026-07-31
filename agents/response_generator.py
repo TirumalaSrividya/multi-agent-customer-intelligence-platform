@@ -18,11 +18,7 @@ class ResponseGeneratorAgent(BaseAgent):
         articles_json = json.dumps([a.model_dump() for a in state.retrieval.selected_articles])
         history_json = json.dumps([t.model_dump(mode="json") for t in state.history])
 
-        # Ordering: fixed system prompt -> selected articles (stable for
-        # this turn) -> conversation history (its earlier-turn prefix is
-        # identical to last call within the same session) -> newest
-        # message last, since it is the one part guaranteed unique to
-        # this exact call.
+        # Place dynamic content in order of stability to improve cache reuse.
         dynamic_context = (
             f"INTENT: {state.intent.intent if state.intent else 'unknown'}\n"
             f"SENTIMENT: {state.intent.sentiment if state.intent else 'neutral'}\n"
