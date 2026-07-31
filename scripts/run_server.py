@@ -1,8 +1,3 @@
-"""Launch the FastAPI server.
-
-Usage:
-    python scripts/run_server.py
-"""
 from __future__ import annotations
 
 import sys
