@@ -1,11 +1,8 @@
-"""Base class for all four agents.
+"""
+Base implementation shared by all agents.
 
-Handles the cross-cutting concerns so each concrete agent file only
-contains its prompt-assembly and output-parsing logic:
-  - calling the LLM backend with (fixed system prompt, dynamic context)
-  - retrying on transient backend errors
-  - repairing/retrying once on malformed JSON output
-  - recording timing + cache telemetry onto the PipelineState
+Provides LLM communication, retry handling, response parsing,
+caching, and telemetry collection.
 """
 from __future__ import annotations
 
@@ -89,7 +86,7 @@ class BaseAgent:
     @staticmethod
     def _parse_json(raw: str) -> dict:
         raw = raw.strip()
-        # tolerate models that wrap output in ```json fences despite instructions
+        # Handle responses wrapped in Markdown code fences.
         if raw.startswith("```"):
             raw = raw.strip("`")
             if raw.lower().startswith("json"):
